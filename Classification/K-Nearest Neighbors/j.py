@@ -17,6 +17,7 @@ y = df['custcat'].values
 y[0:5]
 X = preprocessing.StandardScaler().fit(X).transform(X.astype(float))
 X[0:5]
+#data split
 X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.2, random_state=4)
 print ('Train set:', X_train.shape,  y_train.shape)
 print ('Test set:', X_test.shape,  y_test.shape)
@@ -42,6 +43,7 @@ for n in range(1,Ks):
     std_acc[n-1]=np.std(yhat==y_test)/np.sqrt(yhat.shape[0])
 
 print(mean_acc)
+#plot diffrent k
 plt.plot(range(1,Ks),mean_acc,'g')
 plt.fill_between(range(1,Ks),mean_acc - 1 * std_acc,mean_acc + 1 * std_acc, alpha=0.10)
 plt.legend(('Accuracy ', '+/- 3xstd'))
